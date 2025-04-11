@@ -40,4 +40,8 @@ export const enhancedData: ZScoreData[] = data.map((item, index, array) => ({
     x2: array[Math.min(index + 1, array.length - 1)].name,
 }));
 
-console.log(enhancedData);
+export type ScoreType = keyof Pick<ZScoreData, "pvIsExtreme" | "uvIsExtreme">;
+
+export const isDotRed = (index: number, type: ScoreType): boolean => {
+    return enhancedData[index]?.[type];
+};

@@ -1,5 +1,6 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceArea } from 'recharts';
 import { enhancedData } from './utils/calculateZScore';
+import { CustomDot } from './CustomDot';
 
 function App() {
   return (
@@ -58,12 +59,14 @@ function App() {
           stroke="#8884d8"
           activeDot={{ r: 8 }}
           strokeWidth={2}
+          dot={({ cx, cy, index }) => <CustomDot cx={cx} cy={cy} index={index} type='pvIsExtreme' baseColor='#8884d8' />}
         />
         <Line
           type="monotone"
           dataKey="uv"
           stroke="#82ca9d"
           strokeWidth={2}
+          dot={({ cx, cy, index }) => <CustomDot cx={cx} cy={cy} index={index} type='uvIsExtreme' baseColor='#82ca9d' />}
         />
       </LineChart>
     </>
